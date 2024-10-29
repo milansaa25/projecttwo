@@ -1,8 +1,8 @@
 import { ImCross } from "react-icons/im";
 import { useForm } from "react-hook-form";
 const DataModel = (props) => {
-  const { onSubmit } = props;
-
+  const { onSubmit, handShowModel } = props;
+  //destructure
   const {
     register,
     handleSubmit,
@@ -11,14 +11,24 @@ const DataModel = (props) => {
   } = useForm();
 
   return (
-    <div className="bg-white h-screen w-full fixed bg-opacity-65 flex items-center justify-center">
+    <div
+      onClick={() => {
+        handShowModel(false);
+      }}
+      className="bg-white h-screen w-full fixed bg-opacity-65 flex items-center justify-center"
+    >
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="h-fit w-[350px] border-2 bg-white p-4 flex flex-col gap-4"
       >
         <div className="flex justify-between items-center">
           <h4 className="text-xl font-bold">Basic Model</h4>
-          <p className="p-2">
+          <p
+            onClick={() => {
+              handShowModel(false);
+            }}
+            className="p-2"
+          >
             <ImCross />
           </p>
         </div>

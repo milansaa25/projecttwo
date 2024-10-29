@@ -9,7 +9,8 @@ import { useState } from "react";
 
 const Card = (value) => {
   const { email, id, imgurl, name, phone, url } = value.value;
-
+ const {handShowModel}=value;
+  const {handleId}=value
   const [isred, setIsred] =useState(false);
   const handleRed = () => {
     setIsred(!isred);
@@ -40,11 +41,13 @@ const Card = (value) => {
           <p>{url}</p>
         </div>
       </div>
-      <div onClick={handleRed} className="bg-[#f5f5f5] flex justify-between  ">
-        <div className="border-r-2 p-4 w-1/3 flex  justify-center cursor-pointer">
+      <div  className="bg-[#f5f5f5] flex justify-between  ">
+        <div onClick={handleRed} className="border-r-2 p-4 w-1/3 flex  justify-center cursor-pointer">
           {isred ? <FcLike /> :<CiHeart/>}
         </div>
-        <div className="border-r-2 p-4 w-1/3 flex justify-center cursor-pointer">
+        <div onClick={()=>{ handShowModel(true);
+          handleId(id);
+        }} className="border-r-2 p-4 w-1/3 flex justify-center cursor-pointer">
           <FaPencil />
         </div>
         <div className="border-r-2 p-4 w-1/3 flex justify-center cursor-pointer">
